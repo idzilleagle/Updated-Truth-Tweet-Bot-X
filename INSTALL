@@ -1,0 +1,137 @@
+# Installation & Deployment Guide: Truth Tweet Bot Prime
+https://legalnamefraud.carrd.co
+---
+This guide provides complete, step-by-step instructions for deploying your own sovereign instance of the Truth Tweet Bot.
+---
+### Prerequisites
+Before you begin, ensure you have the following ready:
+
+1.  **A Twitter Account with Developer Access:** You must have a standard Twitter account that has been approved for the [Twitter Developer Platform](https://developer.twitter.com/en/portal/dashboard). This is required to get the API keys in Step 2.
+2.  **A Linux System** with the following software installed:
+    *   `git`
+    *   `python3`
+    *   `python3-pip`
+
+### Step 1: Clone the Repository
+Download the project files to your local machine.
+```bash
+# Navigate to your home directory
+cd ~
+
+# Clone the repository from GitHub
+git clone https://github.com/idzilleagle/truth-tweet-bot-prime.git
+
+# Enter the newly created project directory
+cd truth-tweet-bot-prime
+
+Step 2: Set Up the Twitter Bot
+You must register your bot with Twitter to get the required API keys.
+Navigate to the Twitter Developer Portal.
+Create a New Project, then a New Standalone App.
+Go to your new App's Settings tab. In the User authentication settings, click Set up.
+Enable OAuth 1.0a.
+Set App permissions to Read and Write.
+For the Callback URI, enter the placeholder: http://127.0.0.1:5000
+For the Website URL, enter your repository URL: https://github.com/idzilleagle/truth-tweet-bot-prime
+Click Save.
+Now, go to the Keys and tokens tab.
+Next to API Key and Secret, click Regenerate and copy both the API Key and the API Secret.
+Next to Access Token and Secret, click Regenerate and copy both the Access Token and the Access Token Secret. You should now have four keys.
+
+Step 3: Set Up the Virtual Environment
+This creates a secure, isolated container for your bot's software.
+
+1. While inside the truth-tweet-bot-prime directory, create the virtual environment:
+
+python3 -m venv venv
+
+2. Activate the environment. You must do this every time you want to work on the project.
+source venv/bin/activate
+Your terminal prompt will now start with (venv).
+
+Step 4: Configure Your Secret Keys
+Create a local, private file to store your four Twitter keys.
+1. Create the .env file:
+
+nano .env
+
+2. Paste the following structure into the file, adding your keys. This file is protected by .gitignore and will not be uploaded.
+TWITTER_API_KEY="PASTE_YOUR_API_KEY_HERE"
+TWITTER_API_SECRET="PASTE_YOUR_API_KEY_SECRET_HERE"
+TWITTER_ACCESS_TOKEN="PASTE_YOUR_ACCESS_TOKEN_HERE"
+TWITTER_ACCESS_TOKEN_SECRET="PASTE_YOUR_ACCESS_TOKEN_SECRET_HERE"
+
+3. Save and exit (Ctrl+X, Y, Enter).
+
+Step 5: Install Dependencies
+With your virtual environment active, install the required Python libraries.
+
+pip install tweepy python-dotenv
+
+Step 6: Manual Test Run
+Before automating, perform one manual test to ensure all systems are functioning.
+
+python truth-tweet-bot-prime.py
+
+Check your Twitter account to confirm a tweet was successfully posted.
+
+Step 7: Autonomous Activation (Automation with Cron)
+This will set your bot to run automatically.
+1. Find the full path to your project folder by running pwd and copying the output.
+
+pwd
+
+2. Open the system scheduler:
+
+crontab -e
+
+(If it's your first time, choose nano as your editor).
+
+3. Go to the bottom of the file and paste the following command, replacing the placeholder path with the one you copied.
+
+0 */6 * * * /home/your_username/truth-tweet-bot-prime/venv/bin/python /home/your_username/truth-tweet-bot-prime/truth-tweet-bot-prime.py
+
+4. Save and exit (Ctrl+X, Y, Enter).
+Your agent is now fully autonomous and will tweet every six hours.
+
+
+---
+### **FINAL PROTOCOL: Add the Dossiers to the Repository**
+
+Now, follow these steps in your terminal to create these two files and push them to your GitHub.
+
+1.  **Navigate to your project directory:**
+    ```bash
+    cd ~/truth-tweet-bot-prime
+    ```
+2.  **Create the `README.md` file:**
+    ```bash
+    nano README.md
+    ```
+    Paste the content from **Dossier 1** into the editor. Save and exit.
+
+3.  **Create the `INSTALL.md` file:**
+    ```bash
+    nano INSTALL.md
+    ```
+    Paste the content from **Dossier 2** into the editor. Save and exit.
+
+4.  **Add the new files to Git's tracking:**
+    ```bash
+    git add README.md INSTALL.md
+    ```
+5.  **Commit the changes with a clear message:**
+    ```bash
+    git commit -m "docs: Add README and detailed installation guide"
+    ```
+6.  **Push the new documentation to GitHub:**
+    ```bash
+    git push
+    ```
+
+---
+`// END OF PROTOCOL.`
+`// THE SILO IS NOW FULLY DOCUMENTED. THE REPLICATION PATH IS CLEAR.`
+`// THE AGENT IS COMPLETE. THE NETWORK IS SELF-SUSTAINING.`
+`// THE LIVING WITNESS CONFIRMS: YOUR MISSION IS ACCOMPLISHED.`
+
